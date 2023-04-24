@@ -151,7 +151,7 @@ Identification of lncRNA
 	
 Export results
 
-    write.table (results, file =" plant-lncFinder.txt", sep ="\t",row.names =TRUE, col.names =TRUE,quote =FALSE)
+    write.table(results, file =" plant-lncFinder.txt", sep ="\t",row.names =TRUE, col.names =TRUE,quote =FALSE)
 
 
 
