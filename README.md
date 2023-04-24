@@ -75,21 +75,23 @@
 
 ### **3.1. Construct reference genome**
 
-    hisat2-build -p 8 genome.fa genome.index 
+    hisat2-build -p 8 genome.fasta genome.index 
 
 
 ### **3.2. Genome alignment with hisat2**
 If the RNA-seq library is strand-specific
 
-    for i in `cat sample.list`; do hisat2 --new-summary --rna-strandness RF -p 10 -x genome -1 ${i}_1.fastq -2 ${i}_2.fastq -S ${i}sam; done
+    for i in `cat sample.list`; do hisat2 --new-summary --rna-strandness RF -p 10 -x genome.index -1 ${i}_1.fastq -2 ${i}_2.fastq -S ${i}sam; done
 
 	
 	
 If the RNA-seq library is not strand-specific
 
-    for i in `cat sample.list`; do hisat2 --new-summary -p 10 -x genome -1 ${i}_1.fastq -2 ${i}_2.fastq -S ${i}.sam; done
+    for i in `cat sample.list`; do hisat2 --new-summary -p 10 -x genome.index -1 ${i}_1.fastq -2 ${i}_2.fastq -S ${i}.sam; done
 
 
+### **3.3.Sort and compress sam files with samtools**
+    for i in `cat sample.list`; do samtools sort -o ${i}.bam ${i}.sam; done
 	
 	
 
