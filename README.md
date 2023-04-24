@@ -106,8 +106,9 @@ If the RNA-seq library is not strand-specific
 	
 	
 ### **4.2. Merge transcripts of multiple samples**	
-	stringtie --merge -o transcript.gtf -G gene.gtf SRR*.gtf
-	gffread -w transcript.fasta -g genome.fasta transcript.gtf
+    stringtie --merge -o candidate_transcript.gtf -G genome.gtf SRR*.gtf
+    gffread -w candidate_transcript.fasta -g genome.fasta candidate_transcript.gtf
+    grep '>' candidate_transcript.fasta | awk '{print $1}' | sed 's/>//g' | sort -u > candidate_transcript.txt
 	
 	
 	
@@ -117,9 +118,9 @@ If the RNA-seq library is not strand-specific
 
 
 
-### **5.1. Filter out transcripts shorter than 200 bp.**
+### **5.1. Get the sequence id of length greater than 200bp.**
 
-    awk '{if($3=="transcript") print $0}' transcript.gtf | awk '$5-$4 >= 200 {print}' > filtered_transcript.gtf
+    awk 'BEGIN{RS=">";FS="\n"}NR>1{seq="";for (i=2;i<=NF;i++) seq=seq""$i; print ">"$1"\n"seq}' candidate_transcript.fasta | awk '{if($0 ~ /^>/) {id=$0;} else {len=length($0); if(len > 200) {print id}}}' | cut -d " " -f 1 |sed 's/>//g' >  filtered_transcript.txt
 
 
 
@@ -131,6 +132,13 @@ R Package
     library(LncFinder)
     library(seqinr)
 	
+	
+import training data
+
+    mRNA <- seqinr::read.fasta(file ="./data/training/mRNA.fasta")
+    lncRNA <- seqinr::read.fasta(file ="./data/training/lncRNA.fasta")
+    
+    
 Use "make_frequencies" function to generate the feature file.
 
     frequencies <- make_frequencies(cds.seq = mRNA, lncRNA.seq = lncRNA, SS.features = FALSE, cds.format = "DNA", lnc.format = "DNA", check.cds = TRUE, ignore.illegal = TRUE)	
@@ -143,13 +151,13 @@ loading the model
 	
 Identification of lncRNA 
 
-    Seqs <- seqinr::read.fasta(file ="transcript.fasta")
+    Seqs <- seqinr::read.fasta(file ="candidate_transcript.fasta")
     Plant_results <- LncFinder::lnc_finder(Seqs, SS.features = FALSE, format = "DNA", frequencies.file = frequencies, svm.model = plant, parallel.cores = 2)
 	
 	
 Export results
 
-    write.table(results, file ="plant-lncFinder.txt", sep ="\t",row.names =TRUE, col.names =TRUE,quote =FALSE)
+    write.table(Plant_results, file ="plant-lncFinder.txt", sep ="\t",row.names =TRUE, col.names =TRUE,quote =FALSE)
 
 
 
@@ -157,7 +165,7 @@ Export results
 ### **5.3. Identification of lncRNA with CPAT-plant.**	
 The coding probability (CP) cutoff: 0.46 (CP >=0.46 indicates coding sequence, CP < 0.46 indicates noncoding sequence).
 
-    cpat.py -x Plant_Hexamer.tsv -d Plant.logit.RData -g test.fasta -o CPAT_plant.output
+    cpat.py -x Plant_Hexamer.tsv -d Plant.logit.RData -g candidate_transcript.fasta -o CPAT_plant.output
 
 
 
@@ -167,7 +175,7 @@ The coding probability (CP) cutoff: 0.46 (CP >=0.46 indicates coding sequence, C
     wget https://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/uniprot_sprot.fasta.gz
     gunzip uniprot_sprot.fasta.gz
     diamond makedb --in uniprot_sprot.fasta -d uniprot_out
-    diamond blastx -d uniprot_out -q transcript.fasta -o uniprotoutput.txt
+    diamond blastx -d uniprot_out -q candidate_transcript.fasta -o uniprotoutput.txt
 
 
 
