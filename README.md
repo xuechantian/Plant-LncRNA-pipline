@@ -74,8 +74,8 @@
 
 
 ### **3.1. Construct reference genome**
-    threads=$number
-    hisat2-build -p $threads genome.fa genome.index 
+
+    hisat2-build -p 8 genome.fa genome.index 
 
 
 ### **3.2. Genome alignment with hisat2**
