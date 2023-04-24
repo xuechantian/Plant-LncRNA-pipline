@@ -132,11 +132,6 @@ R Package
     library(seqinr)
 	
 	
-import data
-
-    mRNA <- seqinr::read.fasta(file ="mRNA_dataset.fasta")
-    lncRNA <- seqinr::read.fasta(file ="lncRNA_dataset.fasta")
-	
 	
 loading the model
 
@@ -145,7 +140,7 @@ loading the model
 	
 Identification of lncRNA 
 
-    Seqs <- seqinr::read.fasta(file ="test.fasta")
+    Seqs <- seqinr::read.fasta(file ="transcript.fasta")
     Plant_results <- LncFinder::lnc_finder(Seqs, SS.features = FALSE, format = "DNA", frequencies.file = frequencies, svm.model = plant, parallel.cores = 2)
 	
 	
