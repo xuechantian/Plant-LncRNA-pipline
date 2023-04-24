@@ -153,6 +153,7 @@ Export results
 
 ### **5.3. Identification of lncRNA with CPAT-plant.**	
 The coding probability (CP) cutoff: 0.46 (CP >=0.46 indicates coding sequence, CP < 0.46 indicates noncoding sequence).
+
     cpat.py -x Plant_Hexamer.tsv -d Plant.logit.RData -g test.fasta -o CPAT_plant.output
 
 
