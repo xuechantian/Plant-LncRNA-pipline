@@ -106,8 +106,9 @@ If the RNA-seq library is not strand-specific
 	
 	
 ### **4.2. Merge transcripts of multiple samples**	
-	stringtie --merge -o transcripts.gtf -G genome.gtf SRR*.gtf
-	gffread -w transcripts.fasta -g genome.fasta transcripts.gtf
+	stringtie --merge -o transcript.gtf -G gene.gtf SRR*.gtf
+        gffread -w transcript.fasta -g genome.fasta transcript.gtf
+	
 	
 	
 	
@@ -118,7 +119,7 @@ If the RNA-seq library is not strand-specific
 
 ### **5.1. Filter out transcripts shorter than 200 bp.**
 
-    awk '{if($3=="transcript") print $0}' transcripts.gtf | awk '$5-$4 >= 200 {print}' > filtered_transcripts.gtf
+    awk '{if($3=="transcript") print $0}' transcript.gtf | awk '$5-$4 >= 200 {print}' > filtered_transcript.gtf
 
 
 
@@ -168,7 +169,7 @@ The coding probability (CP) cutoff: 0.46 (CP >=0.46 indicates coding sequence, C
     wget https://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/uniprot_sprot.fasta.gz
     gunzip uniprot_sprot.fasta.gz
     diamond makedb --in uniprot_sprot.fasta -d uniprot_out
-    diamond blastx -d uniprot_out -q transcripts.fasta -o uniprotoutput.txt
+    diamond blastx -d uniprot_out -q transcript.fasta -o uniprotoutput.txt
 
 
 
