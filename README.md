@@ -117,7 +117,7 @@ If the RNA-seq library is not strand-specific
 
 ### **5.1. Filter out transcripts shorter than 200 bp.**
 
-    awk '$5-$4 >= 200 {print}' candidate_transcripts.gtf > filtered_transcripts.gtf
+    awk '{if($3=="transcript") print $0}' candidate_transcripts.gtf | awk '$5-$4 >= 200 {print}' > filtered_transcripts.gtf
 
 
 
