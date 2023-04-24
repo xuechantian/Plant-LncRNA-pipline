@@ -107,6 +107,7 @@ If the RNA-seq library is not strand-specific
 	
 ### **4.2. Merge transcripts of multiple samples**	
 	stringtie --merge -o transcript.gtf -G gene.gtf SRR*.gtf
+	
         gffread -w transcript.fasta -g genome.fasta transcript.gtf
 	
 	
