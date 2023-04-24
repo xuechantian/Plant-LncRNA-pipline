@@ -48,6 +48,7 @@
 	
 ### **2.3. Install LncFinder-plant:**
  R Package
+ 
     install.packages("LncFinder")
     install.package("seqinr")
 
@@ -55,6 +56,7 @@
 
 ### **2.4. Install CPAT-plant:**
  CPAT (version 1.2.4)
+ 
     conda create -n py27 python=2.7 -y
     source activate py27
     pip2 install CPAT
@@ -78,11 +80,13 @@
 
 ### **3.2. Genome alignment with hisat2**
 If the RNA-seq library is strand-specific
+
     for i in `cat sample.list`; do hisat2 --new-summary --rna-strandness RF -p 10 -x genome -1 ${i}_1.fastq -2 ${i}_2.fastq -S ${i}sam; done
 
 	
 	
 If the RNA-seq library is not strand-specific
+
     for i in `cat sample.list`; do hisat2 --new-summary -p 10 -x genome -1 ${i}_1.fastq -2 ${i}_2.fastq -S ${i}.sam; done
 
 
@@ -106,28 +110,42 @@ If the RNA-seq library is not strand-specific
 	
 	
 ## **5. LncRNA identification:**	
+
+
+
 ### **5.1. Filter out transcripts shorter than 200 bp.**
+
     awk '$5-$4 >= 200 {print}' transcripts.gtf > filtered_transcripts.gtf
 
 
 
 ### **5.2.  Identification of lncRNA with LncFinder-plant.**	
+
 R Package
+
     library(LncFinder)
     library(seqinr)
 	
+	
 import data
+
     mRNA <- seqinr::read.fasta(file ="mRNA_dataset.fasta")
     lncRNA <- seqinr::read.fasta(file ="lncRNA_dataset.fasta")
 	
+	
 loading the model
+
     plant = readRDS("Plant_model.rda")
 	
+	
 Identification of lncRNA 
+
     Seqs <- seqinr::read.fasta(file ="test.fasta")
     Plant_results <- LncFinder::lnc_finder(Seqs, SS.features = FALSE, format = "DNA", frequencies.file = frequencies, svm.model = plant, parallel.cores = 2)
 	
+	
 Export results
+
     write.table (results, file =" plant-lncFinder.output", sep ="\t",row.names =TRUE, col.names =TRUE,quote =FALSE)
 
 
