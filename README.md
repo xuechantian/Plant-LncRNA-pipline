@@ -69,7 +69,7 @@
 	
 	
 	
-## **3 Run HISAT2 to map RNA-seq reads to the reference genome:**
+## **3. Run HISAT2 to map RNA-seq reads to the reference genome:**
 
 
 
@@ -90,12 +90,12 @@ If the RNA-seq library is not strand-specific
     for i in `cat sample.list`; do hisat2 --new-summary -p 10 -x genome.index -1 ${i}_1.fastq -2 ${i}_2.fastq -S ${i}.sam; done
 
 
-### **3.3.Sort and compress sam files with samtools**
+### **3.3. Sort and compress sam files with samtools**
     for i in `cat sample.list`; do samtools sort -o ${i}.bam ${i}.sam; done
 	
 	
 
-## **4 Assemble transcripts using StringTie:**	
+## **4. Assemble transcripts using StringTie:**	
 	
 	
 	
@@ -107,7 +107,6 @@ If the RNA-seq library is not strand-specific
 	
 ### **4.2. Merge transcripts of multiple samples**	
 	stringtie --merge -o transcript.gtf -G gene.gtf SRR*.gtf
-	
 	gffread -w transcript.fasta -g genome.fasta transcript.gtf
 	
 	
