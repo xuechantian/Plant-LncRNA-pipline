@@ -163,7 +163,9 @@ The coding probability (CP) cutoff: 0.46 (CP >=0.46 indicates coding sequence, C
 
 
 
-### **5.4. Alignment of sequences to the UniProt protein database with diamond.**	
+### **5.4. Alignment of sequences to the UniProt protein database with diamond.**
+    wget https://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/uniprot_sprot.fasta.gz
+    gunzip uniprot_sprot.fasta.gz
     diamond makedb --in uniprot_sprot.fasta -d uniprot_out
     diamond blastx -d uniprot_out -q candidate_lncRNA.fa -o uniprotoutput.txt
 
