@@ -106,7 +106,7 @@ If the RNA-seq library is not strand-specific
 	
 	
 ### **4.2. Merge transcripts of multiple samples**	
-	stringtie --merge -o merged.gtf -G genome.gtf *.gtf
+	stringtie --merge -o candidate_transcripts.gtf -G genome.gtf *.gtf
 	
 	
 	
@@ -117,7 +117,7 @@ If the RNA-seq library is not strand-specific
 
 ### **5.1. Filter out transcripts shorter than 200 bp.**
 
-    awk '$5-$4 >= 200 {print}' transcripts.gtf > filtered_transcripts.gtf
+    awk '$5-$4 >= 200 {print}' candidate_transcripts.gtf > filtered_transcripts.gtf
 
 
 
