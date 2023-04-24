@@ -47,14 +47,14 @@
 	
 	
 ### **2.3. Install LncFinder-plant:**
-R Package
+ R Package
     install.packages("LncFinder")
     install.package("seqinr")
 
 
 
 ### **2.4. Install CPAT-plant:**
-CPAT (version 1.2.4)
+ CPAT (version 1.2.4)
     conda create -n py27 python=2.7 -y
     source activate py27
     pip2 install CPAT
