@@ -125,6 +125,7 @@ If the RNA-seq library is not strand-specific
 
 R Package
 
+    R
     library(LncFinder)
     library(seqinr)
 	
