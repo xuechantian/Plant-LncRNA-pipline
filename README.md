@@ -131,6 +131,9 @@ R Package
     library(LncFinder)
     library(seqinr)
 	
+Use "make_frequencies" function to generate the feature file.
+
+    frequencies <- make_frequencies(cds.seq = mRNA, lncRNA.seq = lncRNA, SS.features = FALSE, cds.format = "DNA", lnc.format = "DNA", check.cds = TRUE, ignore.illegal = TRUE)	
 	
 	
 loading the model
