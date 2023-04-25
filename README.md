@@ -194,10 +194,13 @@ The coding probability (CP) cutoff: 0.46 (CP >=0.46 indicates coding sequence, C
 
 
 ### **5.5. By intersecting the results obtained from the aforementioned steps, a set of high-confidence lncRNAs were obtained.**
+
 The id of the lncRNA
+
     Rscript insersection.sh candidate_transcript.txt candidate_lncRNA.txt CPAT_plant.output plant-lncFinder.txt uniprotoutput.txt
     
 The lncRNA gtf file
+
     grep -Fwf lncRNA_results.txt transcripts.gtf > lncRNA.gtf
 
 	
