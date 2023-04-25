@@ -158,7 +158,7 @@ Use "make_frequencies" function to generate the feature file.
 	
 loading the model
 
-    plant = readRDS("Plant_model.rda")
+    plant = readRDS("./Model/Plant_model.rda")
 	
 	
 Identification of lncRNA 
@@ -178,7 +178,7 @@ Export results
 The coding probability (CP) cutoff: 0.46 (CP >=0.46 indicates coding sequence, CP < 0.46 indicates noncoding sequence).
 
     source activate py27
-    cpat.py -x Plant_Hexamer.tsv -d Plant.logit.RData -g candidate_transcript.fasta -o CPAT_plant.output
+    cpat.py -x ./Model/Plant_Hexamer.tsv -d ./Model/Plant.logit.RData -g candidate_transcript.fasta -o CPAT_plant.output
 
 
 
