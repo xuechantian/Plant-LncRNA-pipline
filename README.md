@@ -241,6 +241,7 @@ Bidirectional
 	
 ## **7. TE-derived lncRNAs.**		
 	bedtools intersect -a lncRNA.bed -b TE.bed -wo | sort -u > TE_lncRNA_intersect.txt 
+
 	
 	
 	
