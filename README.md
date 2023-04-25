@@ -91,6 +91,15 @@
 
 
 ### **3.2. Genome alignment with hisat2**
+
+cat sample.list
+
+    SRR3087771
+    SRR3087772
+    SRR3087773
+    SRR3087774
+    ...
+
 If the RNA-seq library is strand-specific
 
     for i in `cat sample.list`; do hisat2 --new-summary --rna-strandness RF -p 10 -x genome.index -1 ${i}_1.fastq -2 ${i}_2.fastq -S ${i}sam; done
@@ -239,7 +248,25 @@ Bidirectional-lncRNA
 	
 	
 	
-## **7. TE-derived lncRNAs.**		
+## **7. TE-derived lncRNAs.**
+cat TE.bed
+
+	Chr1    15827287        15838845        LTR_Gypsy
+	Chr1    13085455        13085593        LTR_Copia
+	Chr1    11181821        11181959        LTR_Copia
+	Chr1    20699111        20699248        LTR_Copia
+	...
+	
+	
+cat LncRNA.bed
+	Chr1    11171031        11171031        MSTRG.2781.1
+	Chr1    12199350        12199350        MSTRG.2973.1
+	Chr1    13466928        13466928        MSTRG.3115.1
+	Chr1    13838536        13838536        MSTRG.3127.1
+	...
+	
+	
+TE-lncRNA
 	bedtools intersect -a lncRNA.bed -b TE.bed -wo | sort -u | awk '{print $1,$2,$3,$4,$6,$7,$8,$9}' | sed 's/ /\t/g' | sed '1iChr\tLncRNA_start\tLncRNA_end\tLncRNA_ID\tTE_start\tTE_end\tTE_ID\tOverlap' > TE_lncRNA_intersect.txt 
 
 	
