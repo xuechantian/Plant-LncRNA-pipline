@@ -65,8 +65,14 @@
 	
 ### **2.5. Install Diamond:**
      conda install -c bioconda diamond
-	
-	
+     
+     
+### **2.6. Install FEELnc:**
+    git clone https://github.com/tderrien/FEELnc.git
+    export FEELNCPATH=/path/to/FEELnc/bin/
+    export PERL5LIB=$PERL5LIB:/path/to/FEELnc/lib/
+    export PATH=$PATH:/path/to/FEELnc/scripts/
+
 	
 	
 ## **3. Run HISAT2 to map RNA-seq reads to the reference genome:**
@@ -118,10 +124,10 @@ If the RNA-seq library is not strand-specific
 
 
 
-### **5.1. Get the sequence id of length greater than 200bp.**
+### **5.1. Remove transcripts shorter than 200 bp and overlapping with known mRNAs.**
 
-    awk 'BEGIN{RS=">";FS="\n"}NR>1{seq="";for (i=2;i<=NF;i++) seq=seq""$i; print ">"$1"\n"seq}' candidate_transcript.fasta | awk '{if($0 ~ /^>/) {id=$0;} else {len=length($0); if(len > 200) {print id}}}' | cut -d " " -f 1 |sed 's/>//g' >  filtered_transcript.txt
-
+    FEELnc_filter.pl -i candidate_transcript.gtf -a genome.gtf --monoex=-1 -s 200 -p 20 > candidate_lncRNA.gtf
+    cut -d ";" -f 2 pita_candidate_lncRNA.gtf |sed 's/ transcript_id //g' | sed 's/"//g' > candidate_lncRNA.txt
 
 
 ### **5.2.  Identification of lncRNA with LncFinder-plant.**	
@@ -165,6 +171,7 @@ Export results
 ### **5.3. Identification of lncRNA with CPAT-plant.**	
 The coding probability (CP) cutoff: 0.46 (CP >=0.46 indicates coding sequence, CP < 0.46 indicates noncoding sequence).
 
+    source activate py27
     cpat.py -x Plant_Hexamer.tsv -d Plant.logit.RData -g candidate_transcript.fasta -o CPAT_plant.output
 
 
