@@ -201,7 +201,7 @@ The id of the lncRNA
     
 The lncRNA gtf file
 
-    grep -Fwf lncRNA_results.txt candidate_transcript.gtf > lncRNA.gtf
+    grep -Fwf final_lncRNA_results.txt candidate_transcript.gtf > lncRNA.gtf
 
 	
 	
