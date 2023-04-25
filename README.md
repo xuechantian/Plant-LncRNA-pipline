@@ -240,7 +240,7 @@ Bidirectional-lncRNA
 	
 	
 ## **7. TE-derived lncRNAs.**		
-	bedtools intersect -a lncRNA.bed -b TE.bed -wo | sort -u > TE_lncRNA_intersect.txt 
+	bedtools intersect -a lncRNA.bed -b TE.bed -wo | sort -u | awk '{print $1,$2,$3,$4,$6,$7,$8,$9}' | sed 's/ /\t/g' | sed '1iChr\tLncRNA_start\tLncRNA_end\tLncRNA_ID\tTE_start\tTE_end\tTE_ID\tOverlap' > TE_lncRNA_intersect.txt 
 
 	
 	
