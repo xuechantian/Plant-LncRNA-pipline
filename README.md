@@ -259,6 +259,7 @@ cat TE.bed
 	
 	
 cat LncRNA.bed
+
 	Chr1    11171031        11171031        MSTRG.2781.1
 	Chr1    12199350        12199350        MSTRG.2973.1
 	Chr1    13466928        13466928        MSTRG.3115.1
@@ -267,6 +268,7 @@ cat LncRNA.bed
 	
 	
 TE-lncRNA
+
 	bedtools intersect -a lncRNA.bed -b TE.bed -wo | sort -u | awk '{print $1,$2,$3,$4,$6,$7,$8,$9}' | sed 's/ /\t/g' | sed '1iChr\tLncRNA_start\tLncRNA_end\tLncRNA_ID\tTE_start\tTE_end\tTE_ID\tOverlap' > TE_lncRNA_intersect.txt 
 
 	
