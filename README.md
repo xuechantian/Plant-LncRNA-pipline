@@ -206,8 +206,24 @@ The lncRNA gtf file
 	
 	
 	
-## **6. Classify the final set of lncRNAs based on their genomic locations and sequence features.**		
+## **6. Classify the final set of lncRNAs based on their genomic locations and sequence features.**
+The result file
 	FEELnc_classifier.pl -i lncRNA.gtf -a genome.gtf > lncRNA_classes.txt
+	
+antisense_exonic
+	awk -F '\t' '{if($6 == "antisense" && $10 == "exonic") {print $0}}' lncRNA_classes.txt > LncRNA_antisense_exonic.gtf
+
+intronic
+	awk -F '\t' '{if($10 == "intronic") {print $0}}' lncRNA_classes.txt > LncRNA_intronic.gtf
+
+upstream
+	awk -F '\t' '{if($7 == "intergenic" && $8 <= 2000 && $10 == "upstream") {print $0}}' lncRNA_classes.txt | awk -F '\t' '{if($8 <= 2000 && $10 == "upstream") print $0}' > LncRNA_upstream.gtf
+
+intergenic
+	awk -F '\t' '{if( $7 == "intergenic" && $8 > 2000) {print $0}}' lncRNA_classes.txt > LncRNA_intergenic.gtf
+
+Bidirectional
+	awk -F '\t' '{if( $6 == "antisense" && $7 == "intergenic" && $8 <= 2000 && $9 == "divergent") {print $0}}' lncRNA_classes.txt > LncRNA_Bidirectional.gtf
 	
 	
 	
