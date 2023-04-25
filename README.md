@@ -133,7 +133,6 @@ If the RNA-seq library is not strand-specific
 ### **5.1. Remove transcripts shorter than 200 bp and overlapping with known mRNAs.**
 
     FEELnc_filter.pl -i candidate_transcript.gtf -a genome.gtf --monoex=-1 -s 200 -p 20 > candidate_lncRNA.gtf
-    
     cut -d ";" -f 2 candidate_lncRNA.gtf |sed 's/ transcript_id //g' | sed 's/"//g' > candidate_lncRNA.txt
 
 
@@ -195,13 +194,17 @@ The coding probability (CP) cutoff: 0.46 (CP >=0.46 indicates coding sequence, C
 
 
 ### **5.5. By intersecting the results obtained from the aforementioned steps, a set of high-confidence lncRNAs were obtained.**
-	
-	
+The id of the lncRNA
+    Rscript insersection.sh candidate_transcript.txt candidate_lncRNA.txt CPAT_plant.output plant-lncFinder.txt uniprotoutput.txt
+    
+The lncRNA gtf file
+    grep -Fwf lncRNA_results.txt transcripts.gtf > lncRNA.gtf
 
 	
 	
+	
 ## **6. Classify the final set of lncRNAs based on their genomic locations and sequence features.**		
-	FEELnc_classifier.pl -i lncRNA.gtf -a mRNA.gtf > lncRNA_classes.txt
+	FEELnc_classifier.pl -i lncRNA.gtf -a genome.gtf > lncRNA_classes.txt
 	
 	
 	
