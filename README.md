@@ -1,4 +1,4 @@
-![LncRNA pipline](https://github.com/xuechantian/LncRNA-pipline/blob/master/Plant-LncPip.png)
+![LncRNA pipline](https://github.com/xuechantian/LncRNA-pipline/blob/master/Plant-LncPip workflow.png)
 
 
 
