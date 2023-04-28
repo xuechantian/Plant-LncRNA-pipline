@@ -142,7 +142,7 @@ If the RNA-seq library is not strand-specific
 ### **5.1. Remove transcripts shorter than 200 bp and overlapping with known mRNAs.**
 
     FEELnc_filter.pl -i candidate_transcript.gtf -a genome.gtf --monoex=-1 -s 200 -p 20 > candidate_lncRNA.gtf
-    cut -d ";" -f 2 candidate_lncRNA.gtf |sed 's/ transcript_id //g' | sed 's/"//g' > candidate_lncRNA.txt
+    cut -d ";" -f 2 candidate_lncRNA.gtf |sed 's/ transcript_id //g' | sed 's/"//g' | sort -u > candidate_lncRNA.txt
 
 
 ### **5.2.  Identification of lncRNA with LncFinder-plant.**	
