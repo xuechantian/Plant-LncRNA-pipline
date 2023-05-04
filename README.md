@@ -224,27 +224,27 @@ Classification result file
 	
 Antisense_exonic-lncRNA
 
-	awk -F '\t' '{if($6 == "antisense" && $10 == "exonic") {print $0}}' lncRNA_classes.txt > LncRNA_antisense_exonic.gtf
+	awk -F '\t' '{if($6 == "antisense" && $10 == "exonic") {print $0}}' lncRNA_classes.txt > LncRNA_antisense_exonic.txt
 
 
 Intronic-lncRNA
 
-	awk -F '\t' '{if($10 == "intronic") {print $0}}' lncRNA_classes.txt > LncRNA_intronic.gtf
+	awk -F '\t' '{if($10 == "intronic") {print $0}}' lncRNA_classes.txt > LncRNA_intronic.txt
 
 
 Upstream-lncRNA
 
-	awk -F '\t' '{if($7 == "intergenic" && $8 <= 2000 && $10 == "upstream") {print $0}}' lncRNA_classes.txt | awk -F '\t' '{if($8 <= 2000 && $10 == "upstream") print $0}' > LncRNA_upstream.gtf
+	awk -F '\t' '{if($7 == "intergenic" && $8 <= 2000 && $10 == "upstream") {print $0}}' lncRNA_classes.txt | awk -F '\t' '{if($8 <= 2000 && $10 == "upstream") print $0}' > LncRNA_upstream.txt
 
 
 Intergenic-lncRNA
 
-	awk -F '\t' '{if( $7 == "intergenic" && $8 > 2000) {print $0}}' lncRNA_classes.txt > LncRNA_intergenic.gtf
+	awk -F '\t' '{if( $7 == "intergenic" && $8 > 2000) {print $0}}' lncRNA_classes.txt > LncRNA_intergenic.txt
 
 
 Bidirectional-lncRNA
 
-	awk -F '\t' '{if( $6 == "antisense" && $7 == "intergenic" && $8 <= 2000 && $9 == "divergent") {print $0}}' lncRNA_classes.txt > LncRNA_Bidirectional.gtf
+	awk -F '\t' '{if( $6 == "antisense" && $7 == "intergenic" && $8 <= 2000 && $9 == "divergent") {print $0}}' lncRNA_classes.txt > LncRNA_Bidirectional.txt
 	
 	
 	
