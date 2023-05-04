@@ -49,6 +49,7 @@
 ### **2.2. Install StringTie:**
     wget https://github.com/gpertea/stringtie/releases/download/v2.1.4/stringtie-2.1.4.Linux_x86_64.tar.gz
     tar xzf stringtie-2.1.4.Linux_x86_64.tar.gz
+    export PATH=$PATH:/path/stringtie-2.1.6.Linux_x86_64/
 
 	
 	
@@ -75,9 +76,9 @@
      
 ### **2.6. Install FEELnc:**
     git clone https://github.com/tderrien/FEELnc.git
-    export FEELNCPATH=/path/to/FEELnc/bin/
-    export PERL5LIB=$PERL5LIB:/path/to/FEELnc/lib/
-    export PATH=$PATH:/path/to/FEELnc/scripts/
+    export FEELNCPATH=/path/FEELnc/bin/
+    export PERL5LIB=$PERL5LIB:/path/FEELnc/lib/
+    export PATH=$PATH:/path/FEELnc/scripts/
 
 	
 	
