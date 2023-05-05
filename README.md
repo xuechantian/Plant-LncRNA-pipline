@@ -229,7 +229,7 @@ Antisense_exonic-lncRNA
 
 Intronic-lncRNA
 
-	awk -F '\t' '{if($10 == "intronic") {print $0}}' lncRNA_classes.txt > LncRNA_intronic.txt
+	awk -F '\t' '{if($6 == "sense" && $10 == "intronic") {print $0}}' lncRNA_classes.txt > LncRNA_intronic.txt
 
 
 Upstream-lncRNA
