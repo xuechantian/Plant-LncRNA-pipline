@@ -234,12 +234,12 @@ Intronic-lncRNA
 
 Upstream-lncRNA
 
-	awk -F '\t' '{if($6 == "sense" && $7 == "intergenic" && $8 <= 2000 && $10 == "upstream") {print $0}}' lncRNA_classes.txt | awk -F '\t' '{if($8 <= 2000 && $10 == "upstream") print $0}' > LncRNA_upstream.txt
+	awk -F '\t' '{if($6 == "sense" && $7 == "intergenic" && $8 <= 2000 && $10 == "upstream") {print $0}}' lncRNA_classes.txt > LncRNA_upstream.txt
 	
 	
 Downstream-lncRNA
 
-	awk -F '\t' '{if($6 == "sense" && $7 == "intergenic" && $8 <= 2000 && $10 == "downstream") {print $0}}' lncRNA_classes.txt | awk -F '\t' '{if($8 <= 2000 && $10 == "upstream") print $0}' > LncRNA_downstream.txt
+	awk -F '\t' '{if($6 == "sense" && $7 == "intergenic" && $8 <= 2000 && $10 == "downstream") {print $0}}' lncRNA_classes.txt > LncRNA_downstream.txt
 
 
 Intergenic-lncRNA
