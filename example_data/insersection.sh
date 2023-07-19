@@ -22,7 +22,7 @@ length <- read_delim(args[2], delim = "\t", col_names = FALSE) %>% pull(X1)
 
 
 ##### CPAT-plant
-CPAT <- read_delim(args[3], delim = "\t") %>% filter(coding_prob < 0.46) %>% pull(mRNA_size)
+CPAT <- read_delim(args[3], delim = "\t") %>% filter(coding_prob < 0.43) %>% pull(mRNA_size)
 
 
 ##### LncFinder-plant
