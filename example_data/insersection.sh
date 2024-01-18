@@ -22,7 +22,7 @@ length <- read_delim(args[2], delim = "\t", col_names = FALSE) %>% pull(X1)
 
 
 ##### CPAT-plant
-CPAT <- read_delim(args[3], delim = "\t") %>% filter(coding_prob < 0.43) %>% pull(mRNA_size)
+CPAT <- read_delim(args[3], delim = "\t") %>% filter(coding_prob < 0.46) %>% pull(mRNA_size)
 
 
 ##### LncFinder-plant
@@ -30,7 +30,7 @@ LncFinder <- read_delim(args[4], delim = "\t") %>% filter(Coding.Potential == "N
 
 
 ##### Swissprot
-uniprot <- read_delim(args[5], delim = "\t", col_names = FALSE) %>% filter(X3>80, X11<1e-5) %>% pull(X1) %>% unique()
+uniprot <- read_delim(args[5], delim = "\t", col_names = FALSE) %>% filter(X3>60, X11<1e-5) %>% pull(X1) %>% unique()
 uniprot <- dplyr::setdiff(candidate_lncRNA, uniprot)
 
 
