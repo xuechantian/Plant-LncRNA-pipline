@@ -283,7 +283,7 @@ TE-lncRNA
 ## **8. Citation.**
 If you use Plant-LncPipe, please cite:	
 
-	Xue-Chan Tian, Zhao-Yang Chen, Shuai Nie, Tian-Le Shi, Xue-Mei Yan, Yu-Tao Bao, Zhi-Chao Li, Hai-Yao Ma, Kai-Hua Jia, Wei Zhao, Jian-Feng Mao, Plant-LncPipe: a computational pipeline providing significant improvement in plant lncRNA identification, Horticulture Research, 2024;, uhae041, https://doi.org/10.1093/hr/uhae041
+Xue-Chan Tian, Zhao-Yang Chen, Shuai Nie, Tian-Le Shi, Xue-Mei Yan, Yu-Tao Bao, Zhi-Chao Li, Hai-Yao Ma, Kai-Hua Jia, Wei Zhao, Jian-Feng Mao, Plant-LncPipe: a computational pipeline providing significant improvement in plant lncRNA identification, Horticulture Research, 2024;, uhae041, https://doi.org/10.1093/hr/uhae041
 	
 	
 	
