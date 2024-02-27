@@ -12,7 +12,8 @@
 
 ### **A pipeline for identifying and characterizing lncRNAs in plants.**
 
-#### **Email:** xuechan.tian@bjfu.edu.cn;   **jianfeng.mao@umu.se
+#### **Email:** xuechan.tian@bjfu.edu.cn;  
+    **jianfeng.mao@umu.se
 
 
 
