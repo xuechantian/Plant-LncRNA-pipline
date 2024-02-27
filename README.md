@@ -4,7 +4,7 @@
 
 
 
-# **Plant-LncPip**
+# **Plant-LncPipe**
 
 
 
@@ -276,9 +276,13 @@ cat LncRNA.bed
 TE-lncRNA
 
 	bedtools intersect -a lncRNA.bed -b TE.bed -wo | sort -u | awk '{print $1,$2,$3,$4,$6,$7,$8,$9}' | sed 's/ /\t/g' | sed '1iChr\tLncRNA_start\tLncRNA_end\tLncRNA_ID\tTE_start\tTE_end\tTE_ID\tOverlap' > TE_lncRNA_intersect.txt 
-
 	
 	
+	
+	
+## **8. Citation**
+If you use Plant-LncPipe, please cite:	
+Xue-Chan Tian, Zhao-Yang Chen, Shuai Nie, Tian-Le Shi, Xue-Mei Yan, Yu-Tao Bao, Zhi-Chao Li, Hai-Yao Ma, Kai-Hua Jia, Wei Zhao, Jian-Feng Mao, Plant-LncPipe: a computational pipeline providing significant improvement in plant lncRNA identification, Horticulture Research, 2024;, uhae041, https://doi.org/10.1093/hr/uhae041
 	
 	
 	
