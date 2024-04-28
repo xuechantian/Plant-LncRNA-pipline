@@ -155,8 +155,8 @@ R Package
 	
 import training data
 
-    mRNA <- seqinr::read.fasta(file ="./data/training/mRNA.fasta")
-    lncRNA <- seqinr::read.fasta(file ="./data/training/lncRNA.fasta")
+    mRNA <- seqinr::read.fasta(file ="example_data/training_mRNA.fasta")
+    lncRNA <- seqinr::read.fasta(file ="example_data/training_lncRNA.fasta")
     
     
 Use "make_frequencies" function to generate the feature file.
