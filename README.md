@@ -60,7 +60,7 @@
  R Package
  
     install.packages("LncFinder")
-    install.package("seqinr")
+    install.packages("seqinr")
 
 
 
