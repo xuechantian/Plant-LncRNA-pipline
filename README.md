@@ -104,7 +104,7 @@ cat sample.list
     SRR3087774
     ...
 
-If the RNA-seq library is strand-specific
+If the RNA-seq library is strand-specific (fastq files are clean files filtered by fastp)
 
     for i in `cat sample.list`; do hisat2 --new-summary --rna-strandness RF -p 10 -x genome.index -1 ${i}_1.fastq -2 ${i}_2.fastq -S ${i}.sam; done
 
