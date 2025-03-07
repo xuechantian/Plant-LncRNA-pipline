@@ -210,7 +210,7 @@ The coding probability (CP) cutoff: 0.46 (CP >=0.46 indicates coding sequence, C
 
 The id of the lncRNA
 
-    Rscript insersection.sh candidate_lncRNA.txt candidate_lncRNA.txt CPAT_plant.output plant-lncFinder.txt uniprotoutput.txt
+    Rscript intersection.sh candidate_lncRNA.txt candidate_lncRNA.txt CPAT_plant.output plant-lncFinder.txt uniprotoutput.txt
     
 The lncRNA gtf file
 
